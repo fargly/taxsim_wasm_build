@@ -1,5 +1,9 @@
 ## taxsim.js
 
+>Note:
+> This repo contains a new build of the taxsim.js/taxsim.wasm artifacts in directory, BUILD-20250623.
+> Version 2025Jun23
+
 tooling to generate a JS/WebAssembly version of [NBER TAXSIM](http://taxsim.nber.org)
 
 Uses the [gfortran/dragonegg toolchain](https://chrz.de/2020/04/21/fortran-in-the-browser/) from [StarGate01/Full-Stack-Fortran](https://github.com/StarGate01/Full-Stack-Fortran) to convert `taxsim.f` from fixed-mode f90 fortran into LLVM bitcode, then uses [emscripten](https://emscripten.org) to convert LLVM bitcode into a JS/WASM wrapper.
