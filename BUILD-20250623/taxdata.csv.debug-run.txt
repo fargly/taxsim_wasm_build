@@ -1,0 +1,218 @@
+     -1.   2024.     18.      1.      0.      0.      0.      0.      0.      0.
+      0.      0.      0.      0.      0.      0.      0.      0.  62000.      0.
+      0.      0.      0.      0.      0.      0.      0.      0.      0.      0.
+      0.      0.      5.      0.      0.      0.      0.      0.      0.      0.
+      0.      0.      0.      0.      0.      0.      0.      0.      0.      0.
+      0.      0.      0.      0.      0.
+ NBER TAXSIM @(#) $Version: 2025Jun23    With TCJA
+User modifications to tax law
+
+ State law coded through 2024.
+ Later state laws extrapolated from that year.
+ Marginal tax rate wrt taxpayer earnings.
+
+ Input Data:                   
+     1. Record ID:                       -1.
+     2. Tax Year:                  2024.00
+  3. State (SOI code):               18   Kentucky        
+     4. Marital Status:               1.00 Single  
+     5. Age (Txpyr/Spouse):           0.00       0.00
+     6. Dependent Exemptions:         0.00
+     7. Dependent Ages         
+        Birth years            
+     8. #deps for CCC/CTC/EIC:        0.00       0.00       0.00
+     9. Wages (Txpyr/Spouse):         0.00       0.00
+    10.Self-employment income:        0.00       0.00
+    11. Dividend Income:              0.00
+    12. Interest Received:            0.00
+    13. Short Term Gains:             0.00
+    14. Long Term Gains:              0.00
+    15. Other Property:               0.00
+    16. Other Non-Property:           0.00
+    17. Taxable Pensions:         62000.00
+    18. Gross Social Security:        0.00
+    19. Tot/Txpy/Spouse UI   :        0.00       0.00       0.00
+    20. Non-taxable Transfers:        0.00
+    21. Rent Paid:                    0.00
+    22. Property Taxes Paid:          0.00
+    23. Other Itemized Deds:          0.00
+    24. Child Care Expenses:          0.00
+    25. Mortgage Interest:            0.00
+    26. S-Corp profits:               0.00
+    27. Txpy/Spouse QBI w/o PO:       0.00       0.00
+    28. Txpy/Spouse SSTB w PO:        0.00       0.00
+ interation           1
+ interation           2
+ interation           3
+ interation           1
+ interation           2
+ interation           3
+&NML2
+ TAXSTD=  6591.3051900000064     ,
+ TAXITM=  9559.2811812000054     ,
+ XITEM=F,
+ /
+ interation           1
+ interation           2
+ interation           3
+ interation           1
+ interation           2
+ interation           3
+&NML2
+ TAXSTD=  6591.5651900000066     ,
+ TAXITM=  9559.5323812000079     ,
+ XITEM=F,
+ /
+ Basic Output:               
+      1. Record ID:                -1.                           
+      2. Year:                           2024
+      3. State (SOI code):                 18        Kentucky            
+      4. Federal IIT Liability:        5482.11
+      5. State IIT Liability:          1109.20
+      6. SS Payroll Tax Liability:        0.00
+ Marginal Rates wrt  Earner
+      7. Federal Marginal Rate:          22.00
+      8. State Marginal Rate:             4.00
+      9. Taxpayer SS Rate:                0.00
+                                  
+ Federal Tax Calculation:              Base         +$1
+     10. Federal AGI                  62000.00     62001.00
+     11. UI in AGI 1979+                  0.00         0.00
+     12. Social Security in AGI 84        0.00         0.00
+     13. Zero Bracket Amount          14600.00     14600.00
+     14. Personal Exemptions              0.00         0.00
+     15. Exemption Phaseout 1991+         0.00         0.00
+     16. Deduction Phaseout 1991+         0.00         0.00
+     17. Deductions allowed               0.00         0.00
+         QBI deduction                    0.00         0.00
+     18. Federal Taxable Income       47400.00     47401.00
+     19. Federal Regular Tax           5482.11      5482.33
+     20. Exemption Surtax 1988-96         0.00         0.00
+     21. General Tax Credit 1975-8        0.00         0.00
+     22. Child Tax Credit*17/22 98        0.00         0.00
+     23  Refundable Part                  0.00         0.00
+     24. Child Care Credit 1976+          0.00         0.00
+     25. Earned Income Credit 1975        0.00         0.00
+     26. Alternative Min Income:      62000.00     62001.00
+     27. AMT                              0.00         0.00
+     28. Income Tax Before Credits     5482.11      5482.33
+         Total Credits                    0.00         0.00
+         Net Investment Income Tax        0.00         0.00
+     29. FICA                             0.00         0.15
+         Taxpayer share of FICA           0.00         0.08
+
+ State Tax Calculation:      
+     30. Household Income             62000.00     62001.00
+     31. Imputed Rent                     0.00         0.00
+     32. AGI                          30890.00     30891.00
+     33. Exemptions                       0.00         0.00
+     34. Standard Deduction            3160.00      3160.00
+     35. Itemized Deductions              0.00         0.00
+         Federal tax deduction         5482.11      5482.33
+     36. Taxable Income               27730.00     27731.00
+         Tax before credits            1109.20      1109.24
+         Bracket Rate                     0.00         0.00
+     37. Property Tax Credit              0.00         0.00
+         Rent credit                      0.00         0.00
+     38. Child Care Credit                0.00         0.00
+     39. EIC                              0.00         0.00
+         Energy|Fuel Credit               0.00         0.00
+         Child Tax Credit                 0.00         0.00
+     40. Total Credits                    0.00         0.00
+         Energy/Fuel credit               0.00         0.00
+         General/Food/Low Inc crd         0.00         0.00
+         AMT                              0.00         0.00
+  
+ TCJA 2018+
+     42. QBI Deduction                    0.00         0.00
+  
+ Additional Medicare Taxes 2013+
+     43. Net Investment Income Tax        0.00         0.00
+     44. Medicare Tax on Earnings         0.00         0.00
+  
+
+ Decomposition of Federal Marginal Rate
+    (taxpayer earned income)
+
+ Regular Income Tax
+     Bracket rate from X,Y or Z          22.00
+     Deduction Phaseout:                  0.00
+     Exemption Phaseout:                  0.00
+     Social Security Phasein:             0.00
+     Child Tax Credit:                    0.00
+     Child Care Credit:                   0.00
+     Refundable Part of CTC:              0.00
+     Earned Income Credit:                0.00
+     Surtax on 15% bracket:               0.00
+     Exemption Surtax:                    0.00
+     Unemployment Insurance:              0.00
+     Max Tax on Earned Income:            0.00
+     Elderly Credit:                      0.00
+     Dependent Care Credit:               0.00
+     Percentage Std Deduction:            0.00
+     Medicare tax on Unearned Inco        0.00
+     Cares Recovery Rebates:              0.00
+
+ Alternative Minimum Income Tax  
+        AMT Bracket Rate                 26.00
+            AMT Phaseout                -26.00
+
+ Only Regular Tax Relevant
+        Total Marginal Rate:             22.00
+        FICA w Medicare (t,s):            0.00         0.00
+  data
+
+       0       1       1      -2       0      18       1       0       0       0
+       1       0       0       0       0       0       0       0       0   62000
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       1       0       0       0       0       0
+       0       0       1       0       0      -1       0       0       0      -1
+    2024       0    2024       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0   62001       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       1
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+
+
+
+
+  comnew
+
+    5482   62000   14600       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0    5482   47400    1109
+       0       0       0       0       0       0       0       0       0   85700
+       0       0       0       0       0       0       0       0   85700       0
+       0    5482       0       0   47000       0       0       0       0    5482
+       0       0       0       0   62000      22   62000       1   62000       0
+       0      22       0    1109       0       0    5482       0       0    6999
+       0       0       0       0       0       0       0       0       0   47140
+       1       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0    5482       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0    5482    5482    5482    5482       0       0       0       0
+   47400   47400       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0   14600       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0       0       0       0       0       0       0
+       0       0       0       0    1109       0       0       0       0       0
+
+
+
+
