@@ -1,0 +1,156 @@
+<style>
+  textarea,
+  pre {
+    margin: 1em;
+    padding: 0.25em;
+    background-color: #ccc;
+    min-height: 1em;
+    overflow-x: auto;
+    font-size: 11pt;
+    font-family: monospace;
+  }
+  .example {
+    padding-bottom: 1em;
+  }
+  .example textarea {
+    width: 98%;
+  }
+  .example pre {
+    border: 1px solid #999;
+  }
+  .example pre.error {
+    border: 2px solid red;
+    background-color: #eee;
+    color: red;
+  }
+</style>
+
+<h1>taxsim.js demo</h1>
+requirements:
+<ul>
+  <li><a href="taxsim.js">taxsim.js</a></li>
+  <li><a href="taxsim.wasm">taxsim.wasm</a></li>
+</ul>
+
+<h2>usage</h2>
+<ol>
+  <li>place both files on a webserver</li>
+  <li>include <code>taxsim.js</code> from an html page</li>
+  <li>invoke the <code>taxsim()</code> javascript function</li>
+  <li>resolve the returned <code>Promise</code> to retrieve the output</li>
+</ol>
+<pre>
+&lt;script src="taxsim.js">&lt;/script>
+&lt;script>
+  // taxsim.js implements a function with the following prototype:
+  //
+  //    function taxsim(input: String): Promise
+  //    function taxsim(input: Object): Promise
+  //
+  // the returned promise can be manipulated either directly or via async/await
+
+  // sample input
+  let input1 = ["taxsimid,mstat,year,ltcg,idtl", "1,2,1970,100000,5"].join("\n")
+  let input2 = {taxsimid: 1, mstat: 2, year: 1970, ltcg: 100000, idtl: 5}
+
+  // promise api
+  taxsim(input1).then(function(output) {
+    console.log('taxsim output', output)
+  }).catch(function(error) {
+    console.log('taxsim failed', error)
+  })
+
+  // async/await api
+  try {
+    let output = await taxsim(input2)
+    console.log('taxsim output', output)
+  } catch(error) {
+    console.log('taxsim failed', error)
+  }
+&lt;/script>
+</pre>
+
+<h2>load file</h2>
+<p>load a CSV file for local processing</p>
+<input type="file" id="loadfile" accept="*.csv, *.txt, *.raw" />
+
+<h2>interactive example</h2>
+<p>the output in the example below is calculated right here in your browser, using <code>taxsim.js</code></p>
+<p>the input is interactive, so you can modify the text and the output will recompute</p>
+<div id="examples"></div>
+
+<script src="taxsim.js"></script>
+<script>
+  const examples = [
+    `taxsimid,mstat,year,ltcg,idtl
+     1,2,1970,100000,5`,
+  ]
+
+  async function calculateExamples() {
+    let ex = document.getElementById('examples')
+    for (let x of examples) {
+      let i = x.replace(/\n +/g, '\n')
+      let o = '',
+        err
+      try {
+        o = await taxsim(i)
+      } catch (e) {
+        err = e
+        o = e
+      }
+      ex.innerHTML += `
+        <div class="example">
+          <h4>input:</h4>
+          <textarea spellcheck="false">${i}</textarea>
+          <h4>output:</h4>
+          <pre class="output ${err ? 'error' : ''}">${o}</pre>
+        </div>
+      `
+    }
+  }
+
+  async function updateExample(e) {
+    let input = e.target.value
+    let o = '',
+      err
+    try {
+      o = await taxsim(input)
+    } catch (e) {
+      err = e
+      o = e
+    }
+    //console.log('update', {input, o})
+    let pre = e.target.parentElement.querySelector('.output')
+    pre.innerText = o
+    if (err) pre.classList.add('error')
+    else pre.classList.remove('error')
+  }
+
+  function updateFile(e) {
+    if (!e.target.files) return
+
+    var fileReader = new FileReader()
+    fileReader.onload = async function (fileLoadedEvent) {
+      var input = fileLoadedEvent.target.result
+      let o = ''
+      try {
+        o = await taxsim(input)
+      } catch (e) {
+        o = e
+      }
+      window.open('', '_blank').document.write(`<pre>${o}</pre>`)
+      e.target.value = []
+    }
+
+    const file = e.target.files[0]
+    fileReader.readAsText(file, 'UTF-8')
+  }
+
+  document.querySelector('#loadfile').addEventListener('change', updateFile)
+
+  calculateExamples().then(function () {
+    Array.from(document.querySelectorAll('#examples textarea')).forEach(
+      tx => (tx.onkeyup = tx.onchange = updateExample)
+    )
+  })
+</script>
